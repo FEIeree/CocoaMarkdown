@@ -10,19 +10,19 @@
 
 @interface CMMarkdownImageWrapper : NSObject
 
-@property (nonatomic, readonly, nonnull) NSURL *imageURL;
-@property (nonatomic, readonly, nullable) NSURL *url;
-@property (nonatomic, readonly, nullable) NSString *title;
+@property (nonatomic, readonly) NSURL *imageURL;
+@property (nonatomic, readonly) NSURL *url;
+@property (nonatomic, readonly) NSString *title;
 @property (nonatomic, readonly) NSRange range;
-@property (nonatomic, readonly, nullable) NSTextAttachment *attachment;
+@property (nonatomic, readonly) NSTextAttachment *attachment;
 
-+ (instancetype)imageWrapperWithImageURL:(nonnull NSURL*)imageURL url:(nullable NSURL*)url title:(nullable NSString*)title range:(NSRange)range ;
++ (instancetype)imageWrapperWithImageURL:(NSURL*)imageURL url:(NSURL*)url title:(NSString*)title range:(NSRange)range ;
 
 @end
 
 @interface CMImageAttachmentManager : NSObject
 
-- (void)addMarkdownImageToDownload:(nonnull CMMarkdownImageWrapper*)imageWrapper
+- (void)addMarkdownImageToDownload:(CMMarkdownImageWrapper*)imageWrapper
                    completionBlock:(void(^)(CMMarkdownImageWrapper* updateImage, BOOL isDocumentParsed))completionBlock;
 - (void)markDocumentAsParsed;
 
