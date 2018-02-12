@@ -1,6 +1,7 @@
-#import <Quick/Quick.h>
-#import <CocoaMarkdown/CocoaMarkdown.h>
+@import Quick;
 @import Nimble;
+
+#import <CocoaMarkdown/CocoaMarkdown.h>
 
 QuickSpecBegin(CMDocumentSpec)
 

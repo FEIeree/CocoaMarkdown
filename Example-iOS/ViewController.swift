@@ -15,28 +15,28 @@ class ViewController: UIViewController, UITextViewDelegate {
     var renderer: CMAttributedStringRenderer?
     override func viewDidLoad() {
         super.viewDidLoad()
-        let path = NSBundle.mainBundle().pathForResource("test", ofType: "md")!
-        let document = CMDocument(contentsOfFile: path, options: .Sourcepos)
+        let path = Bundle.main.path(forResource: "test", ofType: "md")!
+        let document = CMDocument(contentsOfFile: path, options: .sourcepos)
         renderer = CMAttributedStringRenderer(document: document, attributes: CMTextAttributes())
         renderer!.registerCustomURLSchemes(["howdyhub"])
-        renderer!.registerHTMLElementTransformer(CMHTMLStrikethroughTransformer())
-        renderer!.registerHTMLElementTransformer(CMHTMLSuperscriptTransformer())
-        renderer!.registerHTMLElementTransformer(CMHTMLUnderlineTransformer())
-        renderer!.renderAndSyncWithTextView(textView)
-        textView.editable = false
-        textView.selectable = true
+        renderer!.register(CMHTMLStrikethroughTransformer())
+        renderer!.register(CMHTMLSuperscriptTransformer())
+        renderer!.register(CMHTMLUnderlineTransformer())
+        renderer!.renderAndSync(with: textView)
+        textView.isEditable = false
+        textView.isSelectable = true
         textView.delegate = self
     }
 
-    func textView(textView: UITextView, shouldInteractWithTextAttachment textAttachment: NSTextAttachment, inRange characterRange: NSRange) -> Bool {
-        if let textAttachment = textAttachment as? CMTextAttachment, url = textAttachment.url {
-            UIApplication.sharedApplication().openURL(url)
+    @nonobjc func textView(textView: UITextView, shouldInteractWithTextAttachment textAttachment: NSTextAttachment, inRange characterRange: NSRange) -> Bool {
+        if let textAttachment = textAttachment as? CMTextAttachment, let url = textAttachment.url {
+            UIApplication.shared.openURL(url)
             return false
         }
         return true
     }
 
-    func textViewDidEndEditing(textView: UITextView) {
+    func textViewDidEndEditing(_ textView: UITextView) {
         print("DID END PARSING")
     }
 }

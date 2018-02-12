@@ -1,7 +1,8 @@
-#import <Quick/Quick.h>
+@import Quick;
+@import Nimble;
+
 #import <CocoaMarkdown/CocoaMarkdown.h>
 #import "CMNode_Private.h"
-@import Nimble;
 
 QuickSpecBegin(CMIteratorSpec)
 
