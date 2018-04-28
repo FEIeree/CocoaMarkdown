@@ -6,7 +6,7 @@
 //  Copyright © 2016 Indragie Karunaratne. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface CMMarkdownImageWrapper : NSObject
 

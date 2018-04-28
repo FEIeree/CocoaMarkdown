@@ -7,7 +7,7 @@
 //
 
 #import "CMImageAttachmentManager.h"
-#import <SDWebImage/SDWebImageManager.h>
+@import SDWebImage;
 #import "CMTextAttachment.h"
 
 @interface CMMarkdownImageWrapper()
