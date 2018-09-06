@@ -14,14 +14,14 @@ Efficient NSAttributedString creation for easy rendering on iOS and OS X. Most e
   s.ios.deployment_target = '8.0'
   s.osx.deployment_target = '10.10'
 
-  s.source        = { :git => 'https://github.com/HowdyHub/CocoaMarkdown.git' }
+  s.source        = { :git => 'https://github.com/FEIeree/CocoaMarkdown' }
   s.source_files  = 'CocoaMarkdown'
   s.private_header_files = 'CocoaMarkdown/*_Private.h'
   s.ios.framework = 'UIKit'
   s.osx.framework = 'Cocoa'
   s.requires_arc  = true
 
-  s.dependency 'cmark', '~> 0.21.0'
-  s.dependency 'Ono', '~> 1.1.3'
-
+  s.dependency 'cmark'
+  s.dependency 'Ono'
+  s.dependency 'SDWebImage'
 end

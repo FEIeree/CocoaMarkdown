@@ -55,11 +55,11 @@
     __weak typeof(self) weakSelf = self;
 
     id <SDWebImageOperation> operation = [[SDWebImageManager sharedManager]
-                                          downloadImageWithURL:imageWrapper.imageURL
+                                          loadImageWithURL:imageWrapper.imageURL
                                           options:SDWebImageAvoidAutoSetImage | SDWebImageContinueInBackground
                                           progress:nil
                                           completed:
-                                          ^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                                          ^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
                                               if(finished && !error) {
                                                   CMTextAttachment *attachment  = [CMTextAttachment new];
                                                   attachment.image              = image;
