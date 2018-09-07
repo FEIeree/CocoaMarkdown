@@ -405,6 +405,22 @@
 
 }
 
+- (void)parser:(CMParser *)parser foundBlockOnEnterText:(NSString *)text{
+    
+}
+
+- (void)parser:(CMParser *)parser foundBlockOnExitText:(NSString *)text{
+    
+}
+
+- (void)parser:(CMParser *)parser foundInlineOnEnterText:(NSString *)text{
+    
+}
+
+- (void)parser:(CMParser *)parser foundInlinekOnExitText:(NSString *)text{
+    
+}
+
 #pragma mark - Private
 
 - (NSDictionary *)listAttributesForNode:(CMNode *)node

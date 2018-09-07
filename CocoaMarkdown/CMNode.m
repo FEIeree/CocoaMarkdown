@@ -40,10 +40,14 @@ static NSString * NSStringFromCMNodeType(CMNodeType type) {
             return @"Horizontal Rule";
         case CMNodeTypeHTML:
             return @"HTML";
+        case CMNodeTypeCustomBlock:
+            return @"Custom Block";
         case CMNodeTypeImage:
             return @"Image";
         case CMNodeTypeInlineHTML:
             return @"Inline HTML";
+        case CMNodeTypeInlineCustom:
+            return @"Inline Custom";
         case CMNodeTypeItem:
             return @"List Item";
         case CMNodeTypeLinebreak:
@@ -230,5 +234,17 @@ static NSString * NSStringFromCMNodeType(CMNodeType type) {
 {
     return cmark_node_get_end_column(_node);
 }
+
+- (NSString *)onEnterText
+{
+    return str(cmark_node_get_on_enter(_node));
+}
+
+- (NSString *)onExitText
+{
+    return str(cmark_node_get_on_exit(_node));
+}
+
+
 
 @end

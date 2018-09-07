@@ -21,6 +21,7 @@ typedef NS_ENUM(NSInteger, CMNodeType) {
     CMNodeTypeItem,
     CMNodeTypeCodeBlock,
     CMNodeTypeHTML,
+    CMNodeTypeCustomBlock,
     CMNodeTypeParagraph,
     CMNodeTypeHeader,
     CMNodeTypeHRule,
@@ -34,6 +35,7 @@ typedef NS_ENUM(NSInteger, CMNodeType) {
     CMNodeTypeLinebreak,
     CMNodeTypeCode,
     CMNodeTypeInlineHTML,
+    CMNodeTypeInlineCustom,
     CMNodeTypeEmphasis,
     CMNodeTypeStrong,
     CMNodeTypeLink,
@@ -170,5 +172,15 @@ typedef NS_ENUM(NSInteger, CMDelimeterType) {
  *  The column on which the receiver ends.
  */
 @property (readonly) NSInteger endColumn;
+
+/**
+ *  literal "on enter" text for a custom 'node',or 'nil' if is none
+ */
+@property (readonly) NSString *onEnterText;
+
+/**
+ *  literal "on exit" text for a custom 'node',or 'nil' if is none
+ */
+@property (readonly) NSString *onExitText;
 
 @end

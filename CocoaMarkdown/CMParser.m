@@ -51,6 +51,10 @@
         unsigned int didEndOrderedList:1;
         unsigned int didStartListItem:1;
         unsigned int didEndListItem:1;
+        unsigned int foundBlockOnEnterText:1;
+        unsigned int foundBlockOnExitText:1;
+        unsigned int foundInlineOnEnterText:1;
+        unsigned int foundInlineOnExitText:1;
     } _delegateFlags;
     volatile int32_t _parsing;
 }
@@ -242,6 +246,25 @@
                 [_delegate parserDidEndListItem:self];
             }
             break;
+        case CMNodeTypeCustomBlock:
+            if (event == CMEventTypeEnter) {
+                if (_delegateFlags.foundBlockOnEnterText) {
+                    [_delegate parser:self foundBlockOnEnterText:node.onEnterText];
+                }
+            } else if (_delegateFlags.foundBlockOnExitText) {
+                [_delegate parser:self foundBlockOnExitText:node.onExitText];
+            }
+            break;
+        case CMNodeTypeInlineCustom:
+            if (event == CMEventTypeEnter) {
+                if (_delegateFlags.foundInlineOnEnterText) {
+                    [_delegate parser:self foundInlineOnEnterText:node.onEnterText];
+                }
+            } else if (_delegateFlags.foundInlineOnExitText) {
+                [_delegate parser:self foundInlinekOnExitText:node.onExitText];
+            }
+            break;
+            
         default:
             break;
     }
@@ -284,6 +307,10 @@
         _delegateFlags.didEndOrderedList = [_delegate respondsToSelector:@selector(parser:didEndOrderedListWithStartingNumber:tight:)];
         _delegateFlags.didStartListItem = [_delegate respondsToSelector:@selector(parserDidStartListItem:)];
         _delegateFlags.didEndListItem = [_delegate respondsToSelector:@selector(parserDidEndListItem:)];
+        _delegateFlags.foundBlockOnEnterText = [_delegate respondsToSelector:@selector(parser:foundBlockOnEnterText:)];
+        _delegateFlags.foundBlockOnExitText = [_delegate respondsToSelector:@selector(parser:foundBlockOnExitText:)];
+        _delegateFlags.foundInlineOnEnterText = [_delegate respondsToSelector:@selector(parser:foundInlineOnEnterText:)];
+        _delegateFlags.foundInlineOnExitText = [_delegate respondsToSelector:@selector(parser:foundInlinekOnExitText:)];
     }
 }
 

@@ -112,5 +112,11 @@
 - (void)parserDidStartListItem:(CMParser *)parser;
 - (void)parserDidEndListItem:(CMParser *)parser;
 
+- (void)parser:(CMParser *)parser foundBlockOnEnterText:(NSString *)text;
+- (void)parser:(CMParser *)parser foundBlockOnExitText:(NSString *)text;
+
+- (void)parser:(CMParser *)parser foundInlineOnEnterText:(NSString *)text;
+- (void)parser:(CMParser *)parser foundInlinekOnExitText:(NSString *)text;
+
 @end
 
